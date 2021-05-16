@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Grid, Container, Typography } from "@material-ui/core";
 
-import UserCard from "../components/UserCard";
 import { createFakeUserAvatarByFullName } from "../utils/createFakeUserAvatar";
+import UserCard from "../components/UserCard";
+import { getAllUsers } from "../services/users/users.service";
 
 import { useStyles } from '../styles/Home'
 
@@ -10,17 +11,23 @@ export default function Home() {
   const classes = useStyles()
 
   const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [err, setErr] = useState(null)
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => {
-        const formattedUsers = data.map(user => ({ 
-          ...user, 
-          photo: createFakeUserAvatarByFullName(user.name) 
-        }))
+    const getUsers = async () => {
+      try {
+        const usersData = await getAllUsers()
+        const formattedUsers = usersData.map(user => ({ ...user, photo: createFakeUserAvatarByFullName(user.name) }))
         setUsers(formattedUsers)
-      })
+      } catch (e) {
+        setErr('Err')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    getUsers()
   }, [])
 
   return (
@@ -30,11 +37,8 @@ export default function Home() {
       </Typography>
       <Grid container justify='center' spacing={4}>
         {users.map(user => (
-          <UserCard 
-            key={user.id} 
-            user={user} 
-          />
-        ))}
+          <UserCard key={user.id} user={user} />
+        ))} 
       </Grid>
     </Container>
   )

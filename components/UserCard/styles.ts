@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles' 
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(({ palette }) => ({
   paper: {
-    background: '#323232',
-    color: '#fff',
+    background: `${palette.primary.main}`,
     borderRadius: 8,
     boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)',
     padding: '20px 24px',
@@ -17,7 +16,7 @@ export const useStyles = makeStyles(() => ({
       display: 'block',
       borderRadius: '0px 10px 10px 0px',
       overflow: 'hidden',
-      background: 'linear-gradient(175deg, rgba(213,150,31,1) 4%, rgba(254,82,0,1.0) 30%, rgba(255,184,0,1) 71%);'
+      background: `linear-gradient(175deg, ${palette.terciary.main} 4%, ${palette.secondary.main} 30%, ${palette.textColor.main} 71%);`
     },
     '&:after': {
       content: "''",
@@ -29,12 +28,12 @@ export const useStyles = makeStyles(() => ({
       display: 'block',
       borderRadius: '10px 0px 0px 10px',
       overflow: 'hidden',
-      background: 'linear-gradient(175deg, rgba(213,150,31,1) 4%, rgba(254,82,0,1.0) 30%, rgba(255,184,0,1) 71%);'
+      background: `linear-gradient(175deg, ${palette.terciary.main} 4%, ${palette.secondary.main} 30%, ${palette.textColor.main} 71%);`
     }
   },
   button: {
-    color: 'rgba(255,184,0,1)',
-    border: '1px solid  rgba(255,184,0,1)',
+    color: `${palette.textColor.main}`,
+    border: `1px solid ${palette.textColor.main}`,
     borderRadius: '12px',
     fontSize: '12px',
     width: '164px',
