@@ -47,14 +47,14 @@ export const useStyles = makeStyles(({ palette }) => ({
     marginLeft: '6px'
   },
   infoGroup: {
-    marginLeft: '24px', 
+    marginLeft: '28px', 
     lineHeight: '24px'
   },
   titleGroup: {
     fontWeight: 'bold'
   },
   headerGroup: {
-    marginLeft: '4px'
+    marginLeft: '8px'
   },
   group: {
     marginTop: '5px'
@@ -64,13 +64,14 @@ export const useStyles = makeStyles(({ palette }) => ({
     width: '100%'
   },
   headerInfo: {
-    flexWrap: 'nowrap', 
+    flexWrap: 'nowrap',   
     marginLeft: '-4px'
   },
   firstInfo: {
     marginLeft: '4px'
   },
   moreContent: {
-    paddingRight: '10px'
+    paddingRight: '10px',
+    marginLeft: '-4px'
   }
 }))
