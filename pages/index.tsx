@@ -3,10 +3,10 @@ import { Grid, Container, Typography } from "@material-ui/core";
 
 import { createFakeUserAvatarByFullName } from "../utils/createFakeUserAvatar";
 import { UserCard, UserCardSkeleton } from "../components/UserCard";
+import ErrorContainer from "../components/UserCard/ErrorContainer";
 import { getAllUsers } from "../services/users/users.service";
 
 import { useStyles } from '../styles/Home'
-import ErrorContainer from "../components/UserCard/ErrorContainer";
 
 interface UserProps {
   id: number;
